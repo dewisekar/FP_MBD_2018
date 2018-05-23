@@ -23,21 +23,16 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/sidebar.css" />
 </head>
 <body>
-<div id="myNav" class="overlay">
-	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	<div class="overlay-content">
-		<a href="#">About</a>
-		<a href="#">Services</a>
-		<a href="#">Clients</a>
-		<a href="#">Contact</a>
-	</div>
-</div>
 <div class="welcomeBox">
+  	<ul class="nav">
+  		<li><a href="#" class="ui red button" id="myBtn" onclick="getModal('myModal')">How to Play</a></li>
+  		<li><a href="#" class="ui orange button" id="myBtn1" onclick="getModal('myModal1')">Buy Animals</a></li>
+  		<li><a href="action_logout.php" class="ui green button">Logout</a></li>
+  	</ul>
 	<div class="col-md-12 text-center">
 		<img src="img/logo.png" style="width: 50%;">
 		<h1> Welcome to Your Ultimate Farming Game, ((insert username here))!</h1>
 		<hr>
-		<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
 	</div>
 </div>
 </body>
