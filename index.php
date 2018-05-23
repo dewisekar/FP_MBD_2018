@@ -22,11 +22,11 @@
 		<form class="ui form" action="action_login.php" method="POST">
 			<div class="field">
 				<label style="font-size: 15px; text-align: left;">Username</label>
-				<input type="text" name="username" placeholder="Username">
+				<input type="text" name="username" placeholder="Username" required>
 			</div>
 			<div class="field">
 				<label style="font-size: 15px; text-align: left;">Password</label>
-				<input type="password" name="password" placeholder="Password">
+				<input type="password" name="password" placeholder="Password" required>
 			</div>
 			<a>
 	        	<input type="submit" value="Sign In" name="submit" class="ui inverted orange button">
@@ -83,6 +83,20 @@
 	  	</div>
 	</div>
 </div>
+<div class="ui left demo vertical inverted sidebar labeled icon menu" style="display: block;">
+		<a class="item">
+		 	<i class="home icon"></i>
+		 	Home
+		</a>
+		<a class="item">
+			<i class="block layout icon"></i>
+			Topics
+		</a>
+		<a class="item">
+		 	<i class="smile icon"></i>
+		 	Friends
+		</a>
+	</div>
 </body>
 <!--semantic ui-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
