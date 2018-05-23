@@ -1,0 +1,31 @@
+body
+{
+	margin: 0;
+	padding: 0;
+	background-image: url('../img/loginBG.png');
+	background-size: cover;
+	background-position: center;
+	font-family: 'Muli', sans-serif;
+
+}
+.loginBox{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 40%;
+	height: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	box-sizing: border-box;
+	background-color: white;
+	border-radius: 2em;
+	background-image: url("bglogin.png");
+}
+
+.loginBox h1{
+	font-family: 'Muli', sans-serif;
+}
+
