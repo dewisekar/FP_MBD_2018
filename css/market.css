@@ -2,7 +2,7 @@ body
 {
 	margin: 0;
 	padding: 0;
-	background-image: url('../img/bg4.jpg');
+	background-image: url('../img/bg6.jpg');
 	background-size: cover;
 	background-position: center;
 	font-family: 'Muli', sans-serif;
@@ -34,9 +34,10 @@ body
     display:inline;
 }
 
- hr{
+hr{
 	border: 1px solid black;
 	width: 80%;
+	background-color: black;
 }
 
 h1{
@@ -47,13 +48,50 @@ td{
 	text-align: left;
 	border: 1px solid black;
 	padding: 5px;
-	background-color: rgba(82,191,211,0.8);
+	background-color: #f27ea8;
 }
 
 th{
 	border: 1px solid black;
 	padding: 5px;
-	background-color: rgba(1,164,169,0.8);
+	background-color: #ed247c;
 }
+
+.home1, .home2, .home3{
+	margin-top: 2%;
+}
+
+.home1 td{
+	text-align: left;
+	border: 1px solid black;
+	padding: 5px;
+	background-color: #f9bcd0;
+}
+
+.home1 th{
+	border: 1px solid black;
+	padding: 5px;
+	background-color: #d9add0;
+}
+
+.home2 th{
+	background-color: #1e5178;
+	color: white;
+}
+
+.home2 td{
+	background-color: #00c1f0;
+}
+
+.home3 th{
+	background-color: #afdfe9;
+}
+
+.home3 td{
+	background-color: #ceecf9;
+}
+
+
+
 
 

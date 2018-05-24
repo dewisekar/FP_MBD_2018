@@ -43,8 +43,8 @@
 		<p>5116100002-5116100004</p>		
 	</div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
 	  	<div class="modal-content">
 	  	  	<div class="modal-header">
 	  	  	  	<h5 class="modal-title" id="exampleModalLabel">Register</h5>
@@ -83,20 +83,6 @@
 	  	</div>
 	</div>
 </div>
-<div class="ui left demo vertical inverted sidebar labeled icon menu" style="display: block;">
-		<a class="item">
-		 	<i class="home icon"></i>
-		 	Home
-		</a>
-		<a class="item">
-			<i class="block layout icon"></i>
-			Topics
-		</a>
-		<a class="item">
-		 	<i class="smile icon"></i>
-		 	Friends
-		</a>
-	</div>
 </body>
 <!--semantic ui-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
