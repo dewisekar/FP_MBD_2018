@@ -65,22 +65,23 @@ th{
 	text-align: left;
 	border: 1px solid black;
 	padding: 5px;
-	background-color: #f9bcd0;
+	background-color: #a0622d;
 }
 
 .home1 th{
 	border: 1px solid black;
 	padding: 5px;
-	background-color: #d9add0;
+	background-color: #754d29;
+	color: white;
 }
 
 .home2 th{
-	background-color: #1e5178;
+	background-color: #a1a2a7;
 	color: white;
 }
 
 .home2 td{
-	background-color: #00c1f0;
+	background-color: #d4d5d4;
 }
 
 .home3 th{

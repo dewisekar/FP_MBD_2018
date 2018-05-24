@@ -17,11 +17,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Buy From the Farming Gods</title>
+	<title>Market</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-	<link rel="stylesheet" href="css/shops.css">
+	<link rel="stylesheet" href="css/market.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/modal.css"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/sidebar.css" />
 </head>
@@ -33,7 +33,7 @@
   			<li><a href="home.php" class="ui red button">Dashboard</a></li>
   			<li><a href="inventory.php" class="ui orange button">My Inventory</a></li>
   			<li><a href="shops.php" class="ui yellow button">Buy From Farming Gods</a></li>
-  			<li><a href="#" class="ui olive button">Market</a></li>
+  			<li><a href="market.php" class="ui olive button">Market</a></li>
   			<li><a href="action_logout.php" class="ui green button">Logout</a></li>
   		</ul>
   	</div>
@@ -71,16 +71,17 @@
 		<hr>
 	</div>
 	
-	<div class="col-md-12" style="text-align: right;">
+	<div class="col-md-12" style="text-align: left;">
 		<div class="home1">
-			<h2>Buy Animal Foods</h2>
-			<table id="employee_data" style="left: 0; width: 100%;">  
+			<h2>Buy Animal Products</h2>
+			<table id="employee_datas" style="left: 0; width: 100%;">  
                 <thead>  
                     <tr>  
                        <th>Name</th>  
-                       <th>Address</th>  
-                       <th>Gender</th>  
-                       <th>Designation</th>   
+                       <th>User</th>  
+                       <th>Quantity</th>  
+                       <th>Price/item</th>
+                       <th>Buy</th>   
                     </tr>  
                 </thead>
                 <tbody>
@@ -88,6 +89,7 @@
                 		<td>Bill Gates</td>
 						<td>555 77 854</td>
 						<td>555 77 854</td>
+						<td>???</td>
 						<td><form class="ui form">
 								<div class= "field">
 									<label>Quantity:</label>
@@ -101,56 +103,36 @@
             </table>  
 		</div>
 	</div>
-	<div class="col-md-12">
+	<div class="col-md-12" style="text-align: left;">
 		<div class="home2">
-			<h2 style="text-align: left;">Buy Animals</h2>
-			<table style="width:100%">
-				<tr>
-					<th>Name</th>
-					<th>Level</th>
-					<th>Price</th>
-					<th>Buy</th>
-				</tr>
-				<tr>
-					<td>Bill Gates</td>
-					<td>555 77 854</td>
-					<td>555 77 854</td>
-					<td><form class="ui form">
-							<div class= "field">
-								<label>Quantity:</label>
-								<input type="number" name="s_jumlah" placeholder="Quantity" style="width: 40%;">
-								<button class="ui button" type="submit" style="margin-left: 0;">Sell</button>
-							</div>							
-						</form>
+			<h2>Buy Manufactured Products</h2>
+			<table id="employee_data" style="left: 0; width: 100%;">  
+                <thead>  
+                    <tr>  
+                       <th>Name</th>  
+                       <th>User</th>  
+                       <th>Quantity</th>  
+                       <th>Price/item</th>
+                       <th>Buy</th>   
+                    </tr>  
+                </thead>
+                <tbody>
+                	<tr>
+                		<td>Bill Gates</td>
+						<td>555 77 854</td>
+						<td>555 77 854</td>
+						<td>???</td>
+						<td><form class="ui form">
+								<div class= "field">
+									<label>Quantity:</label>
+									<input type="number" name="s_jumlah" placeholder="Quantity" style="width: 40%;">
+									<button class="ui button" type="submit" style="margin-left: 0;">Sell</button>
+								</div>							
+							</form>
 					</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	<div class="col-md-12">
-		<div class="home3">
-			<h2 style="text-align: right;">Buy Machines</h2>
-			<table style="width:100%">
-				<tr>
-					<th>Name</th>
-					<th>Level</th>
-					<th>Price</th>
-					<th>Buy</th>
-				</tr>
-				<tr>
-					<td>Bill Gates</td>
-					<td>555 77 854</td>
-					<td>555 77 854</td>
-					<td><form class="ui form">
-							<div class= "field">
-								<label>Quantity:</label>
-								<input type="number" name="s_jumlah" placeholder="Quantity" style="width: 40%;">
-								<button class="ui button" type="submit" style="margin-left: 0;">Sell</button>
-							</div>							
-						</form>
-					</td>
-				</tr>
-			</table>
+					</tr>
+                </tbody>             	   
+            </table>  
 		</div>
 	</div>
 </div>
@@ -169,5 +151,10 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 	    $('#employee_data').DataTable();
+	} );
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#employee_datas').DataTable();
 	} );
 </script>

@@ -34,7 +34,7 @@
   			<li><a href="home.php" class="ui red button">Dashboard</a></li>
   			<li><a href="inventory.php" class="ui orange button">My Inventory</a></li>
   			<li><a href="shops.php" class="ui yellow button">Buy From Farming Gods</a></li>
-  			<li><a href="#" class="ui olive button">Market</a></li>
+  			<li><a href="market.php" class="ui olive button">Market</a></li>
   			<li><a href="action_logout.php" class="ui green button">Logout</a></li>
   		</ul>
   	</div>
