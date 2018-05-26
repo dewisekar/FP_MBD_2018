@@ -12,6 +12,9 @@
 	$id= $_SESSION['u_username'];
 	$sql = mysqli_query($con, "select * from users where u_id = '$id'") or die (mysqli_error());
 	$data = mysqli_fetch_assoc($sql);
+	$qry="SELECT * FROM katalog_hewan";
+ 	$result = mysqli_query($con,$qry);
+ 	$row = mysqli_fetch_all($result,MYSQLI_ASSOC); 
 	mysqli_close($con);
 ?>
 <!DOCTYPE html>
@@ -48,21 +51,21 @@
 			<h2 style="text-align: center; margin-top: 2%;">Your Information</h2>
 			<table style="width:100% ">
   				<tr>
-			  		<th>Username:</th>
-			  		<td><?php echo "$data[u_username]"; ?></td>
-			  	</tr>
-			  	<tr>
-			  		<th>Level:</th>
-			  		<td><?php echo "$data[u_level]"; ?></td>
-			  	</tr>
-			  	<tr>
-			  		<th>Experience:</th>
-			  		<td>555 77 855</td>
-			  	</tr>
-			  	<tr>
-			  		<th>Money:</th>
-			  		<td>555 77 855</td>
-			  	</tr>
+		  			<th>Username:</th>
+		  			<td><?php echo "$data[u_username]"; ?></td>
+		  		</tr>
+		  		<tr>
+		  			<th>Level:</th>
+		  			<td><?php echo "$data[l_level]"; ?></td>
+		  		</tr>
+		  		<tr>
+		  			<th>Experience:</th>
+		  			<td><?php echo "$data[u_exp]";?></td>
+		  		</tr>
+		  		<tr>
+		  			<th>Money:</th>
+		  			<td>$ <?php echo "$data[u_money]";?></td>
+		  		</tr>
 			</table>
 		</div>
 		<div class="col-md-2"></div>	
@@ -120,19 +123,31 @@
 					<th>Price</th>
 					<th>Buy</th>
 				</tr>
-				<tr>
-					<td>Bill Gates</td>
-					<td>555 77 854</td>
-					<td>555 77 854</td>
-					<td><form class="ui form">
+				<?php for ($i=0;$i<sizeof($row);$i++) { ?>
+                <tr>
+                	<td><?php echo $row[$i]['kh_hewan']; ?></td>
+					<td><?php echo $row[$i]['kh_level']; ?></td>
+					<td>$ <?php echo $row[$i]['kh_harga']; ?></td>
+					<td><?php if ($data['l_level'] >= $row[$i]['kh_level']): ?>
+						<form class="ui form">
 							<div class= "field">
-								<label>Quantity:</label>
 								<input type="number" name="s_jumlah" placeholder="Quantity" style="width: 40%;">
-								<button class="ui button" type="submit" style="margin-left: 0;">Sell</button>
+								<button class="ui green button" type="submit" style="margin-left: 0;">Buy</button>
 							</div>							
 						</form>
+						<?php else: ?>
+						<form class="ui form">
+							<div class= "field">
+								<div class="ui disabled input" style="width: 40%;">
+									<input type="number" name="s_jumlah" placeholder="Quantity" style="width: 40%;">
+								</div>
+								<button class="ui red button" type="submit" style="margin-left: 0;" disabled>Buy</button>
+							</div>							
+						</form>
+						<?php endif ?>
 					</td>
 				</tr>
+				<?php } ?>
 			</table>
 		</div>
 	</div>

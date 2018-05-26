@@ -53,15 +53,15 @@
 		  	</tr>
 		  	<tr>
 		  		<th>Level:</th>
-		  		<td><?php echo "$data[u_level]"; ?></td>
+		  		<td><?php echo "$data[l_level]"; ?></td>
 		  	</tr>
 		  	<tr>
 		  		<th>Experience:</th>
-		  		<td>555 77 855</td>
+		  		<td><?php echo "$data[u_exp]";?></td>
 		  	</tr>
 		  	<tr>
 		  		<th>Money:</th>
-		  		<td>555 77 855</td>
+		  		<td>$ <?php echo "$data[u_money]";?></td>
 		  	</tr>
 		</table>
 	</div>

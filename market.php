@@ -12,6 +12,9 @@
 	$id= $_SESSION['u_username'];
 	$sql = mysqli_query($con, "select * from users where u_id = '$id'") or die (mysqli_error());
 	$data = mysqli_fetch_assoc($sql);
+	$qry="SELECT * FROM katalog_hewan";
+ 	$result = mysqli_query($con,$qry);
+ 	$row = mysqli_fetch_all($result,MYSQLI_ASSOC); 
 	mysqli_close($con);
 ?>
 <!DOCTYPE html>
@@ -53,15 +56,15 @@
 			  	</tr>
 			  	<tr>
 			  		<th>Level:</th>
-			  		<td><?php echo "$data[u_level]"; ?></td>
+			  		<td><?php echo "$data[l_level]"; ?></td>
 			  	</tr>
 			  	<tr>
 			  		<th>Experience:</th>
-			  		<td>555 77 855</td>
+			  		<td><?php echo "$data[u_exp]";?></td>
 			  	</tr>
 			  	<tr>
 			  		<th>Money:</th>
-			  		<td>555 77 855</td>
+			  		<td>$ <?php echo "$data[u_money]";?></td>
 			  	</tr>
 			</table>
 		</div>
@@ -117,8 +120,9 @@
                     </tr>  
                 </thead>
                 <tbody>
+                	<?php for ($i=0;$i<sizeof($row);$i++) { ?>
                 	<tr>
-                		<td>Bill Gates</td>
+                		<td><?php echo "$row[$i]['kh_nama']" ?>;</td>
 						<td>555 77 854</td>
 						<td>555 77 854</td>
 						<td>???</td>
@@ -129,8 +133,9 @@
 									<button class="ui button" type="submit" style="margin-left: 0;">Sell</button>
 								</div>							
 							</form>
-					</td>
+						</td>
 					</tr>
+					<?php } ?>
                 </tbody>             	   
             </table>  
 		</div>
