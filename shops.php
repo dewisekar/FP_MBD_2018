@@ -10,12 +10,23 @@
 		<?php
 	}
 	$id= $_SESSION['u_username'];
-	$sql = mysqli_query($con, "select * from users where u_id = '$id'") or die (mysqli_error());
-	$data = mysqli_fetch_assoc($sql);
-	$qry="SELECT * FROM katalog_hewan";
+	$qry = "call sp_selectusername('$id')";
  	$result = mysqli_query($con,$qry);
- 	$row = mysqli_fetch_all($result,MYSQLI_ASSOC); 
-	mysqli_close($con);
+ 	$row = mysqli_fetch_all($result,MYSQLI_ASSOC);
+ 	mysqli_next_result($con); 
+	$qry1 = "call sp_viewkataloghewan()";
+	$result1 = mysqli_query($con,$qry1);
+	$row1 = mysqli_fetch_all($result1,MYSQLI_ASSOC);
+	mysqli_next_result($con); 
+	$qry2 = "call sp_showmesin()";
+	$result2 = mysqli_query($con,$qry2);
+	$row2 = mysqli_fetch_all($result2,MYSQLI_ASSOC);
+	mysqli_next_result($con);
+	$qry2 = "call sp_showmakanternak()";
+	$result2 = mysqli_query($con,$qry2);
+	$row3 = mysqli_fetch_all($result2,MYSQLI_ASSOC);
+	mysqli_next_result($con); 
+	mysqli_close($con); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,19 +63,19 @@
 			<table style="width:100% ">
   				<tr>
 		  			<th>Username:</th>
-		  			<td><?php echo "$data[u_username]"; ?></td>
+		  			<td><?php echo $row[0]['u_username']; ?></td>
 		  		</tr>
 		  		<tr>
 		  			<th>Level:</th>
-		  			<td><?php echo "$data[l_level]"; ?></td>
+		  			<td><?php echo $row[0]['l_level']; ?></td>
 		  		</tr>
 		  		<tr>
 		  			<th>Experience:</th>
-		  			<td><?php echo "$data[u_exp]";?></td>
+		  			<td><?php echo $row[0]['u_exp'];?></td>
 		  		</tr>
 		  		<tr>
 		  			<th>Money:</th>
-		  			<td>$ <?php echo "$data[u_money]";?></td>
+		  			<td>$ <?php echo $row[0]['u_money'];?></td>
 		  		</tr>
 			</table>
 		</div>
@@ -84,32 +95,35 @@
 					<th>Price</th>
 					<th>Buy</th>
 				</tr>
-				<tr>
-					<td>Bill Gates</td>
-					<td>555 77 854</td>
-					<td>555 77 854</td>
-					<td><form class="ui form">
+				<?php for ($i=0;$i<sizeof($row3);$i++) { ?>
+                <tr>
+                	<td><?php echo $row3[$i]['mt_nama']; ?></td>
+					<td><?php echo $row3[$i]['mt_level']; ?></td>
+					<td> $<?php echo $row3[$i]['mt_harga']; ?></td>
+					<td><?php if ($row[0]['l_level'] >= $row3[$i]['mt_level']): ?>
+						<form class="ui form" method="POST" action="action_buyfoods.php">
 							<div class= "field">
-								<label>Quantity:</label>
-								<input type="number" name="s_jumlah" placeholder="Level" style="width: 40%;">
-								<button class="ui button" type="submit" style="margin-left: 0;">Sell</button>
+								<input type="hidden" name="id_makanan" value="<?php echo $row3[$i]['mt_id']; ?>">
+								<input type="hidden" name="id_user" value="<?php echo $id ?>">
+								<input type="number" name="s_jumlah" placeholder="Quantity" style="width: 40%;" min="1" max="10">
+								<a>
+									<input class="ui green button" type="submit" style="margin-left: 0;" name="submit" value="Buy"></input>
+								</a>
 							</div>							
 						</form>
-					</td>
-				</tr>
-				<tr>
-					<td>Bill Gates</td>
-					<td>555 77 854</td>
-					<td>555 77 854</td>
-					<td><form class="ui form">
+						<?php else: ?>
+						<form class="ui form">
 							<div class= "field">
-								<label>Quantity:</label>
-								<input type="number" name="s_jumlah" placeholder="Quantity" style="width: 40%;">
-								<button class="ui button" type="submit" style="margin-left: 0;">Sell</button>
+								<div class="ui disabled input" style="width: 40%;">
+									<input type="number" name="s_jumlah" placeholder="Quantity" style="width: 40%;">
+								</div>
+								<button class="ui red button" type="submit" style="margin-left: 0;" disabled>Buy</button>
 							</div>							
 						</form>
+						<?php endif ?>
 					</td>
 				</tr>
+				<?php } ?>
 			</table>
 		</div>
 	</div>
@@ -123,16 +137,20 @@
 					<th>Price</th>
 					<th>Buy</th>
 				</tr>
-				<?php for ($i=0;$i<sizeof($row);$i++) { ?>
+				<?php for ($i=0;$i<sizeof($row1);$i++) { ?>
                 <tr>
-                	<td><?php echo $row[$i]['kh_hewan']; ?></td>
-					<td><?php echo $row[$i]['kh_level']; ?></td>
-					<td>$ <?php echo $row[$i]['kh_harga']; ?></td>
-					<td><?php if ($data['l_level'] >= $row[$i]['kh_level']): ?>
-						<form class="ui form">
+                	<td><?php echo $row1[$i]['kh_hewan']; ?></td>
+					<td><?php echo $row1[$i]['kh_level']; ?></td>
+					<td> $<?php echo $row1[$i]['kh_harga']; ?></td>
+					<td><?php if ($row[0]['l_level'] >= $row1[$i]['kh_level']): ?>
+						<form class="ui form" method="POST" action="action_buyanimals.php">
 							<div class= "field">
-								<input type="number" name="s_jumlah" placeholder="Quantity" style="width: 40%;">
-								<button class="ui green button" type="submit" style="margin-left: 0;">Buy</button>
+								<input type="hidden" name="id_hewan" value="<?php echo $row1[$i]['kh_id']; ?>">
+								<input type="hidden" name="id_user" value="<?php echo $id ?>">
+								<input type="number" name="s_jumlah" placeholder="Quantity" style="width: 40%;" min="1" max="10">
+								<a>
+									<input class="ui green button" type="submit" style="margin-left: 0;" name="submit" value="Buy"></input>
+								</a>
 							</div>							
 						</form>
 						<?php else: ?>
@@ -161,19 +179,29 @@
 					<th>Price</th>
 					<th>Buy</th>
 				</tr>
+				<?php for ($i=0;$i<sizeof($row2);$i++) { ?>
 				<tr>
-					<td>Bill Gates</td>
-					<td>555 77 854</td>
-					<td>555 77 854</td>
-					<td><form class="ui form">
+					<td><?php echo $row2[$i]['m_nama']; ?></td>
+					<td><?php echo $row2[$i]['m_level']; ?></td>
+					<td>$ <?php echo $row2[$i]['m_harga']; ?></td>
+					<td><?php if ($row2[$i]['m_level']<=$row[0]['l_level']): ?>
+						<form class="ui form" method="POST" action="action_buymesin.php">
 							<div class= "field">
-								<label>Quantity:</label>
-								<input type="number" name="s_jumlah" placeholder="Quantity" style="width: 40%;">
-								<button class="ui button" type="submit" style="margin-left: 0;">Sell</button>
-							</div>							
+								<input type="hidden" name="id_mesin" value="<?php echo $row2[$i]['m_id']; ?>">
+								<input type="hidden" name="id_user" value="<?php echo $id ?>"> 
+								<a><input class="ui green button" type="submit" name="submit" value="Buy"style="margin-left: 0;"></a>
+							</div>
 						</form>
+						<?php else: ?>
+						<form class="ui form" method="POST" action="">
+							<div class= "field">
+								<a><input class="ui red button" type="submit" style="margin-left: 0;" value="Buy"disabled></a>
+							</div>
+						</form>
+						<?php endif ?>
 					</td>
 				</tr>
+				<?php } ?>
 			</table>
 		</div>
 	</div>
